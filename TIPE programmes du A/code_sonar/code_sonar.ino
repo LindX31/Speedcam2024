@@ -30,8 +30,8 @@ void loop() {
   duration = pulseIn(echoPin, HIGH);
 
   // convert the time into a distance
-  inches = microsecondsToInches(duration);
-  cm = microsecondsToCentimeters(duration);
+  long inches = microsecondsToInches(duration);
+  long cm = microsecondsToCentimeters(duration);
 
   Serial.print(cm);
   Serial.print("cm");

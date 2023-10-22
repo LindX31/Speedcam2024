@@ -85,7 +85,7 @@ class LowPass
     }
 };
 
-void passebas(float cm , float temp, float valeurLim){
+float passebas(float cm , float temp, float valeurLim){
 
   float cmFiltre ;
 
@@ -170,7 +170,7 @@ void loop() {
     M1_stop();
   }
 
-  float temp = cmFiltre 
+  float temp = cmFiltre;
 }
 
 long microsecondsToCentimeters(long microseconds) {
