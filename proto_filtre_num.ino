@@ -38,7 +38,7 @@ float prediction2(float e[3])
   return moyenne;
 }
 
-
+//----------------------------------------------------------------------------------------------------------
 const int combien = 5;
 float moyenneGlissante(float (&lastData)[combien], float nouvelleValeur, int indiceCourant)
 {
@@ -52,7 +52,7 @@ float moyenneGlissante(float (&lastData)[combien], float nouvelleValeur, int ind
   int indiceGlissant = indiceCourant % combien;
   lastData[indiceCourant] = nouvelleValeur;
   float somme = 0;
-  for (int i = 0; i<10; i++)
+  for (int i = 0; i<5; i++)
   {
     somme += lastData[i];
   }
