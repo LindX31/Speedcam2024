@@ -15,7 +15,9 @@ float filtreBase1(float rawData, float lastFiltered, int fcoupure, int Te = 0.01
   Filtre linéaire numérique d'ordre 1, comme on a vu en physique CN2
   */
   float tau = 1/6.28/fcoupure;
+  float omegac = 6.28*fcoupure;
   float filtered = (tau-Te)/tau * lastFiltered + Te * rawData;
+  float nouvelle_filtree = (lastFiltered + omegac*rawData*Te)/(1+omegac*Te);
   return filtered;
 }
 
