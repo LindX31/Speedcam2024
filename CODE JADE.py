@@ -152,9 +152,6 @@ def ponderebino2(X):
     return s/sigma
 n=int(input("nombre"))
 
-for i in range(n):
-    print(bino(i, 2*n - 1))
-
 def bino(i,n):
     return fact(n)/fact(n-i)/fact(i)
 
