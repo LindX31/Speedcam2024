@@ -6,15 +6,21 @@ void setup(void)
   int i;
   for(i=4;i<=5;i++)
     pinMode(i, OUTPUT);
-  Serial.begin(19200);
+  Serial.begin(9600);
   Serial.println("Run keyboard control");
   digitalWrite(E1,LOW);
   pinMode(2,INPUT);
 }
-
+int speed = 0;
 void loop() {
   // put your main code here, to run repeatedly:
-    back_off(100);
+  /*
+    delay(200);
+    back_off(speed);
+    Serial.print(speed, DEC);
+    speed += 1;
+    */
+  advance(0);
 }
 
 
@@ -35,7 +41,7 @@ void back_off (char a)
   digitalWrite(M1,LOW);
 }
 
-void M1_stop()
+void stop()
 {
   digitalWrite(M1,HIGH);
   analogWrite(E1, 0);
