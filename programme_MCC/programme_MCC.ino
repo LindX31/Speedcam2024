@@ -104,9 +104,16 @@ void loop() {
   // float cmf = lp.filt(cm);
 
   //float vitesse = map(complet, 5, 100, 100, 0); //modifie
-  float differentiel = 30 - position
-  if differentiel >= 0 {
+  float differentiel = 20 - position;
+  if (differentiel <= 0) {
     float vitesseplus = map(differentiel, 0, 40, 100, 40);
+    float vitessemoins = 0;
+    advance(vitesseplus);
+  }
+  else {
+    float vitessemoins = map(differentiel, 0, 40, 40, 100);
+    float vitesseplus = 0;
+    back_off(vitessemoins);
   }
   //float vitesse = map(valeurFiltree, 5, 100, 100, 0); //modifie
 
@@ -114,19 +121,20 @@ void loop() {
   Serial.print("cm  ");
   //Serial.print(cmFiltre);
   //Serial.print("cmFiltre ");
-  Serial.print(valeurFiltree);
-  Serial.print(" valeurFiltree ");
+  Serial.print(position);
+  Serial.print(" position ");
   //Serial.print(moygli);
   //Serial.print(" moygli ");
   Serial.println();
 
-
-  if ( valeurFiltree <= 100) { // modifie
+/*
+  if ( position <= 100) { // modifie
     advance(vitesse);
   }
   else {
     stop();
   }
+  */
 /*
   //temp = cmFiltre;
   dernier = valeurFiltree;
