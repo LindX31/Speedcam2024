@@ -10,7 +10,11 @@ def make_480p(cap):
     cap.set(3, 640)
     cap.set(4, 480)
 
-make_480p(video)
+def make_720p(cap):
+    cap.set(3, 1280)
+    cap.set(4, 720)
+
+make_720p(video)
 
 def traitement_image(img):
     height, width, trois = np.shape(img)
