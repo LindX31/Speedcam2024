@@ -1,5 +1,6 @@
 {
-    "sketch": "TIPE programmes du A/code_moteur_DC/code_moteur_DC.ino",
+    "sketch": "Image/com_arduino.ino",
     "board": "arduino:avr:uno",
-    "port": "/dev/tty.usbmodem1201"
+    "port": "/dev/tty.usbmodem1201",
+    "programmer": "arduinoasisp"
 }

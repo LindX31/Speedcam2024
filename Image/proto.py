@@ -13,7 +13,7 @@ def make_720p(cap):
     cap.set(3, 1280)
     cap.set(4, 720)
 
-make_720p(video) # les deux fonctions réduisent la qualité vidéo (temps de traitement)
+make_480p(video) # les deux fonctions réduisent la qualité vidéo (temps de traitement)
 
 def traitement_image(img):
     height, width, trois = np.shape(img) # dimensions de l'image, en px
