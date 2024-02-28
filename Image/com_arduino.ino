@@ -1,4 +1,4 @@
-long distance; 
+int distance; 
 const int E1 = 5; ///<Motor1 Speed
 const int M1 = 4; ///<Motor1 Direction
 const int trigPin = 7;
@@ -12,32 +12,35 @@ void setup() {
 } 
 void loop() { 
 	while (!Serial.available()); 
+	delay(100); //délai nécessaire pour que la carte aie le temps d'acquérir l'information du port série
 	distance = Serial.readString().toInt(); 
-	Serial.print(distance); 
+	//Serial.print(distance); 
 
 	if (distance >= 0) {
-    	float vitesseplus = map(distance, 0, 400, 40, 100);
-    	float vitessemoins = 0;
+    	long vitesseplus = map(distance, 0, 200, 40, 100);
+    	int vitessemoins = 0;
+      Serial.print(vitesseplus);
     	advance(vitesseplus);
 	}
 	else {
-    	float vitessemoins = map(distance, 0, -400, 40, 100);
-    	float vitesseplus = 0;
+    	int vitessemoins = map(-distance, 0, 200, 40, 100);
+    	int vitesseplus = 0;
+      Serial.print(-vitessemoins);
     	back_off(vitessemoins);
 	}
 } 
 
 
 
-void advance(char a)
+void advance(int a) //modifié, à voir si on remet char à la place de int
 {
-  analogWrite (E1,a);
+  analogWrite(E1,a);
   digitalWrite(M1,HIGH);
 }
 
-void back_off (char a)
+void back_off (int a) //idem 
 {
-  analogWrite (E1,a);
+  analogWrite(E1,a);
   digitalWrite(M1,LOW);
 }
 

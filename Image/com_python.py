@@ -44,6 +44,7 @@ while True:
     _,frame = video.read()
     try:
         image, dist = traitement_image(frame) 
+        dist = int(dist)
         remanent = dist
     except: 
         image, dist = frame, remanent
