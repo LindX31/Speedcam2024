@@ -31,7 +31,7 @@ def traitement_image(img):
     for contour in contours: 
         approx = cv2.approxPolyDP(contour,0.01*cv2.arcLength(contour,True),True) 
         aire = cv2.contourArea(contour)
-        if ((len(approx) > 10) & (aire > 500) ): 
+        if ((len(approx) > 10) & (aire > 900) ): 
             contours_liste.append(contour)
     cv2.drawContours(img, contours_liste,  -1, (255,0,0), 2)
     (x,y),rayon = cv2.minEnclosingCircle(contours_liste[0])

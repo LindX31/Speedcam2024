@@ -5,6 +5,8 @@ const int trigPin = 7;
 const int echoPin = 8;
 float temp = 220 ;
 float dernier = 50;
+float vitesseplus;
+float vitessemoins;
 
 void setup() { 
 	Serial.begin(9600); // configure le baudrate, à adapter selon le capteur et l'usage
@@ -12,33 +14,33 @@ void setup() {
 } 
 void loop() { 
 	while (!Serial.available()); 
-	delay(100); //délai nécessaire pour que la carte aie le temps d'acquérir l'information du port série
+  delay(100);
 	distance = Serial.readString().toInt(); 
 	//Serial.print(distance); 
 
-	if (distance >= 0) {
-    	long vitesseplus = map(distance, 0, 200, 40, 100);
-    	int vitessemoins = 0;
-      Serial.print(vitesseplus);
+	if (distance <= 0) {
+    	vitesseplus = 40 - distance * 60/200;
+    	vitessemoins = 0;
+      Serial.print(-vitesseplus);
     	advance(vitesseplus);
 	}
 	else {
-    	int vitessemoins = map(-distance, 0, 200, 40, 100);
-    	int vitesseplus = 0;
-      Serial.print(-vitessemoins);
+    	vitessemoins = 40 + distance * 60/200;
+    	vitesseplus = 0;
+      Serial.print(vitessemoins);
     	back_off(vitessemoins);
 	}
 } 
 
 
 
-void advance(int a) //modifié, à voir si on remet char à la place de int
+void advance(int a)
 {
   analogWrite(E1,a);
   digitalWrite(M1,HIGH);
 }
 
-void back_off (int a) //idem 
+void back_off (int a)
 {
   analogWrite(E1,a);
   digitalWrite(M1,LOW);

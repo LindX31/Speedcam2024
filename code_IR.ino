@@ -15,7 +15,7 @@ void loop()
 // read the value from the ir sensor
 
     intSensorResult = analogRead(IR_SENSOR); //Get sensor value
-    fltSensorCalc = (6787.0 / (intSensorResult - 3.0)) - 4.0; //Calculate distance in cm
+    fltSensorCalc = ((6787.0 / (intSensorResult - 3.0)) - 4.0)/2.6; //Calculate distance in cm
 
     Serial.print(fltSensorCalc); //Send distance to computer
     Serial.println(" cm"); //Add cm to result
