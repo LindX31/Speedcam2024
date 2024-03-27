@@ -14,7 +14,7 @@ void setup() {
 } 
 void loop() { 
 	while (!Serial.available()); 
-  delay(100);
+	delay(100);
 	distance = Serial.readString().toInt(); 
 	//Serial.print(distance); 
 
