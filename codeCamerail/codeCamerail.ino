@@ -96,13 +96,14 @@ void setup() {
 void loop() {
 
   //float cm = mesureSonar();
-  float cm = mesureIR();
+  float cm = mesureIRalt();
   //float valeurLim = cm + 50 ;
   //float cmFiltre = passebas(cm , temp, valeurLim);
   float position = filtreBase1(cm, dernier, 5, 0.01);
   //float moygli = moyenneGlissante(dernieres, cm, courant);
   //float complet = filtreComplet(dernieres, cm, courant, linfini);
-
+  Serial.print(analogRead(IR_SENSOR));
+  Serial.print('\n');
   // LowPass<2> lp(6000, 100, true);
 
   // float cmf = lp.filt(cm);
@@ -192,10 +193,12 @@ int mesureIR() {
   fltSensorCalc = ((6787.0 / (intSensorResult - 3.0)) - 4.0)/2.6; //Calculate distance in cm
   return fltSensorCalc ;
 }
-
+/* On oublie cette partie
 int mesureIRalt(){
   intSensorResult = analogRead(IR_SENSOR); //Get sensor value
   x = intSensorResult ;
-  fltSensorCalc = - 79.29998511176315*x*x*x*x*x*x*x + 778.4883525654406*x*x*x*x*x*x - 3179.676321660266*x*x*x*x*x + 7010.748935796856*x*x*x*x - 9041.71916794599*x*x*x + 6882.420577339685*x*x - 2936.7161484327144*x + 595.339324606415 ;
+  //fltSensorCalc = - 79.29998511176315*x*x*x*x*x*x*x + 778.4883525654406*x*x*x*x*x*x - 3179.676321660266*x*x*x*x*x + 7010.748935796856*x*x*x*x - 9041.71916794599*x*x*x + 6882.420577339685*x*x - 2936.7161484327144*x + 595.339324606415 ;
+  fltSensorCalc = x*(x*(x*(x*(x*(x*(- 79.29998511176315*x + 778.4883525654406) - 3179.676321660266) + 7010.748935796856) - 9041.71916794599) + 6882.420577339685) - 2936.7161484327144) + 595.339324606415 ;
   return fltSensorCalc ;
 }
+*/

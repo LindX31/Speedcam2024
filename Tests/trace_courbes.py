@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-file_name = 'sonar_data.txt'
+file_name = 'cam_data.txt'
 
 tableau = np.genfromtxt(file_name, delimiter=';')
 
@@ -16,7 +16,7 @@ def trace():
     plt.plot(temps, xCible, color='g', label='Cible')
     plt.xlabel("Temps")
     plt.ylabel("Position")
-    plt.title("Entrée et réponse du système à une consigne de position (Sonar)")
+    plt.title("Entrée et réponse du système à une consigne de position (sonar)")
 
     plt.legend()
     plt.show()
